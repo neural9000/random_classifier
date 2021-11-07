@@ -18,6 +18,7 @@ if uploaded_file is not None:
     tf.compat.v1.reset_default_graph()
     tf.keras.backend.clear_session()
     prepocess_func, model, model_name, resolution = models.load_random_model()
+    print(f'Running {model_name}')
     img_arr = prepocess_func(np.array(img.resize((resolution, resolution))))
     img_arr = np.expand_dims(img_arr, 0)
     preds: np.ndarray = model.predict(img_arr)
